@@ -6,10 +6,12 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 09:17:56 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/21 09:18:49 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/21 12:08:24 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
+
+static char *ft_read (int fd, char *buff, char *str, int res);
 
 char	*get_next_line(int fd)
 {
@@ -31,11 +33,11 @@ char	*get_next_line(int fd)
 	
 }
 
-char	*ft_read(int	fd, char *buff, char *str, int res)
+static	char	*ft_read(int	fd, char *buff, char *str, int res)
 {
-	while (res > 0 && ft_strchr(str, '\n'))
+	while (res > 0 && ft_strchrgnl(str, '\n'))
 	{
-		str = ft_strjoin(str, buff);
+		str = ft_strjoingnl(str, buff);
 		res = read(fd, buff, 1);
 		buff[res] = '\0';
 	}

@@ -6,12 +6,12 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 09:18:12 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/21 09:18:15 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/21 12:08:22 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-int	ft_strlen(char *str)
+int	ft_strlengnl(char *str)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	ft_strchr(char *str, char c)
+int	ft_strchrgnl(char *str, char c)
 {
 	int	i;
 
@@ -39,7 +39,7 @@ int	ft_strchr(char *str, char c)
 	return (1);
 }
 
-char	*ft_strjoin(char *str, char *buff)
+char	*ft_strjoingnl(char *str, char *buff)
 {
 	int		i;
 	int		j;
@@ -47,7 +47,7 @@ char	*ft_strjoin(char *str, char *buff)
 
 	i = 0;
 	j = 0;
-	res = malloc(ft_strlen(str) + ft_strlen(buff) + 1);
+	res = malloc(ft_strlengnl(str) + ft_strlengnl(buff) + 1);
 	if (!res)
 		return (NULL);
 	if (str)
