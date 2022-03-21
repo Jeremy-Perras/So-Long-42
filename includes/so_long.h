@@ -6,17 +6,16 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 13:53:14 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/19 17:35:53 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/21 09:30:00 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SOLONG_H
-
+#include "../libft/libft.h"
+#include "../printf/includes/ft_printf.h"
 # include <math.h>
 # include <mlx.h>
-//# include <unistd.h>
 # include <stdlib.h>
-
 typedef struct s_vector 
 {
 	int	x;
@@ -30,22 +29,10 @@ typedef struct s_windows
 
 }	t_windows;
 
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-	int	a;
-}	t_color;
-
 typedef struct s_image
 {
 	void		*ref;
 	t_vector	size;
-	char		*pixel;
-	int			bits_per_pixel;
-	int			line_size;
-	int			endian;
 }	t_image;
 
 typedef struct	s_data 
@@ -74,5 +61,5 @@ void		ft_put_sprite(t_data *data);
  *ft_hooks.c
  *
  */
-int			ft_input(int key, void *program);
+int			ft_input(int key, t_data *data);
 #endif
