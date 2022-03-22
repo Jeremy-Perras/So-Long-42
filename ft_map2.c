@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_windows.c                                       :+:      :+:    :+:   */
+/*   ft_map2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 10:36:15 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/22 11:25:00 by jperras          ###   ########.fr       */
+/*   Created: 2022/03/22 16:32:35 by jperras           #+#    #+#             */
+/*   Updated: 2022/03/22 16:45:37 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
 
-static int	ft_close(void)
+void	ft_readmap(t_data *data, char *path, int *flag)
 {
-	exit(0);
-}
+	int			fd;
+	int			i= 0;
+	char		*tmp;
+	char		*tmp2;
 
-t_windows	ft_windows(void *mlx, int widht, int height, char *title)
-{
-	t_windows	windows;
-
-	windows.ref = mlx_new_window(mlx, widht, height, title);
-	windows.size.x = widht;
-	windows.size.y = height;
-	mlx_hook(windows.ref, 17, 0, ft_close, 0);
-	return (windows);
+	fd = open(path, O_RDONLY);
+	if(fd < 1)
+		*flag = 1;
+	if (!*flag)
+	{
+		tmp = get_next_line(fd);
+		tmp2 = get_next_line(fd);
+		i = 0;
+		while (tmp2)
+		{
+			tmp = ft_strjoin(tmp, tmp2);
+			tmp2 = get_next_line(fd);
+			i++;
+		}
+		close(fd);
+		data->map.maps = ft_split(tmp, '\n');
+		data->map.line = i;
+	}
 }

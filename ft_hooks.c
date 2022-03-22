@@ -6,53 +6,95 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 15:54:42 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/21 17:14:48 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/22 15:57:49 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
 
-ft_choose g_cho[]={['0']=ft_left,['1']=ft_up,['2']=ft_right,['13']=ft_down};
+t_choose2	g_cho2[] = {[0] = ft_left, [1] = ft_up, [2] = ft_right,
+[13] = ft_down};
+t_choose3	g_cho3[] = {['1'] = ft_one, ['0'] = ft_zero, ['E'] = ft_e,
+['C'] = ft_c, ['P'] = ft_s};
 
 int	ft_input(int key, t_data *data)
 {
-	
 	static int	count;
+	int			i;
+
+	i = 0;
+	if ((key >= 0 && key <= 3) || key == 13)
+		g_cho2[key](data, &count);
+	if (key == 53)
+		exit (0);
+	while (data->map.maps[0][i])
+	{
+		mlx_put_image_to_window(data->mlx, data->window.ref,
+			data->image[2].ref, data->image[0].size.x * i, 0);
+		i++;
+	}
+	ft_putto_window(data, count);
+	mlx_put_image_to_window(data->mlx, data->window.ref,
+		data->image[1].ref, data->position.x, data->position.y);
+	ft_printf("you have make :%d moves\n", count);
+	return (0);
+}
+
+void	ft_up(t_data *data, int *count)
+{	
 	int			x;
 	int			y;
 	int			width;
 	int			lenght;
-	
+
 	x = data->position.x;
 	y = data->position.y;
 	width = data->image[0].size.y;
 	lenght = data->image[0].size.x;
-	mlx_put_image_to_window(data->mlx, data->window.ref,
-		data->image[0].ref, data->position.x, data->position.y);
-	if (key == 1 && data->map.maps[(y / width) + 1][(x / lenght)] != '1')
-	{
-		count ++;	
-		data->position.y += data->image[0].size.y ;
+	g_cho3[(int)(data->map.maps[(y / width) + 1][(x / lenght)])]
+		(data, count, 1);
+}
 
-	}
-	if (key == 0 && data->map.maps[(y / width)][(x / lenght) - 1] != '1')
-	{
-			data->position.x -= data->image[0].size.x;
-			count ++;
-	}
-	if (key == 2 && data->map.maps[(y / width)][(x / lenght) + 1] != '1')
-	{
-			data->position.x += data->image[0].size.x;
-			count ++;
-	}
-	if (key == 13 && data->map.maps[(y / width) - 1][(x / lenght)] != '1')
-	{	
-		data->position.y -=  data->image[0].size.y;
-		count ++;
-	}
-	mlx_put_image_to_window(data->mlx, data->window.ref,data->image[2].ref,0,0);
-	mlx_string_put(data->mlx, data->window.ref, 0, 10,0xFFFFFF, ft_itoa(count));	
-	mlx_put_image_to_window(data->mlx, data->window.ref,
-		data->image[1].ref, data->position.x, data->position.y);
-	printf("%d\n",count);
-	return (0);
+void	ft_left(t_data *data, int *count)
+{
+	int	x;
+	int	y;
+	int	width;
+	int	lenght;
+
+	x = data->position.x;
+	y = data->position.y;
+	width = data->image[0].size.y;
+	lenght = data->image[0].size.x;
+	g_cho3[(int)(data->map.maps[(y / width)][(x / lenght) - 1])]
+		(data, count, 0);
+}
+
+void	ft_right(t_data *data, int *count)
+{
+	int			x;
+	int			y;
+	int			width;
+	int			lenght;
+
+	x = data->position.x;
+	y = data->position.y;
+	width = data->image[0].size.y;
+	lenght = data->image[0].size.x;
+	g_cho3[(int)(data->map.maps[(y / width)][(x / lenght) + 1])]
+		(data, count, 2);
+}
+
+void	ft_down(t_data *data, int *count)
+{	
+	int			x;
+	int			y;
+	int			width;
+	int			lenght;
+
+	x = data->position.x;
+	y = data->position.y;
+	width = data->image[0].size.y;
+	lenght = data->image[0].size.x;
+	g_cho3[(int)(data->map.maps[(y / width) - 1][(x / lenght)])]
+		(data, count, 13);
 }
