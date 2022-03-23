@@ -6,7 +6,7 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 13:53:14 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/22 16:38:35 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/23 08:16:35 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <math.h>
 # include <mlx.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include "get_next_line.h"
 # include <fcntl.h>
 

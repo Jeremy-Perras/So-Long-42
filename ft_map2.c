@@ -6,7 +6,7 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:32:35 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/22 16:45:37 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/23 08:11:51 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -14,12 +14,13 @@
 void	ft_readmap(t_data *data, char *path, int *flag)
 {
 	int			fd;
-	int			i= 0;
+	int			i;
 	char		*tmp;
 	char		*tmp2;
 
+	i = 0;
 	fd = open(path, O_RDONLY);
-	if(fd < 1)
+	if (fd < 1)
 		*flag = 1;
 	if (!*flag)
 	{

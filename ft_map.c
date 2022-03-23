@@ -6,7 +6,7 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 09:47:21 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/22 17:37:01 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/23 08:11:20 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -66,7 +66,7 @@ static int	ft_map_is_rectangle(char **map)
 int	ft_read_map(char *path, t_data *data)
 {
 	int			flag;
-	
+
 	flag = 0;
 	ft_readmap(data, path, &flag);
 	if (flag == 0)
@@ -74,9 +74,9 @@ int	ft_read_map(char *path, t_data *data)
 	if (flag == 0)
 		flag = ft_map_is_rectangle(data->map.maps);
 	if (flag == 0)
-		flag = ft_check_map(data->map.maps,data->map.line, data);
+		flag = ft_check_map(data->map.maps, data->map.line, data);
 	if (flag == 0)
-		flag = ft_check_start(data->map.maps, data);	
+		flag = ft_check_start(data->map.maps, data);
 	if (flag || !data->map.items)
 		return (1);
 	return (0);
@@ -95,8 +95,8 @@ static int	ft_check_num(char **map)
 	{
 		while (map[i][j])
 		{
-			if (map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != '0' && map[i][j] != '1' &&
-					map[i][j] != 'C')
+			if (map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != '0'
+					&& map[i][j] != '1' && map[i][j] != 'C')
 				flag = 1;
 			j++;
 		}
@@ -123,7 +123,7 @@ static int	ft_check_start(char **map, t_data *data)
 		{
 			if (map[i][j] == 'P' || map[i][j] == 'E')
 				flag++;
-			if(map[i][j] == 'C')
+			if (map[i][j] == 'C')
 				data->map.items = data->map.items + 1;
 			j++;
 		}

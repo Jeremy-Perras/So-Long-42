@@ -6,7 +6,7 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 15:54:42 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/22 15:57:49 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/23 08:44:03 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -25,7 +25,11 @@ int	ft_input(int key, t_data *data)
 	if ((key >= 0 && key <= 3) || key == 13)
 		g_cho2[key](data, &count);
 	if (key == 53)
+	{
+		mlx_destroy_window(data->mlx, data->window.ref);
+		ft_printf("Too hard for you :) ?\n");
 		exit (0);
+	}
 	while (data->map.maps[0][i])
 	{
 		mlx_put_image_to_window(data->mlx, data->window.ref,

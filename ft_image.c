@@ -6,7 +6,7 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 12:23:45 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/22 17:47:08 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/23 08:09:11 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,22 @@ void	ft_put_background(t_data *data)
 
 static void	ft_put_sprite2(t_data *data, int i, int j)
 {
-
 	if (data->map.maps[i][j] == 'P')
 	{
 		mlx_put_image_to_window(data->mlx, data->window.ref,
-				data->image[1].ref, (data->image[0].size.x) * j,
-				(data->image[0].size.y) * i);
+			data->image[1].ref, (data->image[0].size.x) * j,
+			(data->image[0].size.y) * i);
 		data->position.x = data->image[0].size.x * j;
 		data->position.y = data->image[0].size.y * i;
 	}
 	else if (data->map.maps[i][j] == '1')
 		mlx_put_image_to_window(data->mlx, data->window.ref,
-				data->image[2].ref,
-				(data->image[0].size.x) * j, (data->image[0].size.y) * i);
+			data->image[2].ref,
+			(data->image[0].size.x) * j, (data->image[0].size.y) * i);
 	else if (data->map.maps[i][j] == 'E')
 		mlx_put_image_to_window(data->mlx, data->window.ref,
-				data->image[3].ref,
-				(data->image[0].size.x) * j, (data->image[0].size.y) * i);
-
+			data->image[3].ref,
+			(data->image[0].size.x) * j, (data->image[0].size.y) * i);
 }
 
 void	ft_put_sprite(t_data *data)
@@ -65,11 +63,11 @@ void	ft_put_sprite(t_data *data)
 		while (data->map.maps[i][j])
 		{
 			if (data->map.maps[i][j] == 'P')
-				ft_put_sprite2(data, i, j);	
+				ft_put_sprite2(data, i, j);
 			else if (data->map.maps[i][j] == '1')
 				ft_put_sprite2(data, i, j);
 			else if (data->map.maps[i][j] == 'E')
-				ft_put_sprite2(data, i, j);			
+				ft_put_sprite2(data, i, j);
 			else if (data->map.maps[i][j] == 'C')
 				mlx_put_image_to_window(data->mlx, data->window.ref,
 					data->image[4].ref,

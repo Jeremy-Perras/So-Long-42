@@ -6,14 +6,14 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 08:17:02 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/22 15:43:52 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/23 08:19:43 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 void	ft_one(t_data *data, int *count, int position)
-{
+{	
 	(void) data;
 	(void) count;
 	(void) position;
@@ -21,7 +21,7 @@ void	ft_one(t_data *data, int *count, int position)
 
 void	ft_zero(t_data *data, int *count, int position)
 {
-	if(data->map.itemsflag)
+	if (data->map.itemsflag)
 		ft_putone(data, position);
 	else
 	{	
@@ -89,7 +89,7 @@ void	ft_putone(t_data *data, int position)
 		data->map.maps[(y / width) + 1][(x / lenght)] = '1';
 	else if (position == 2)
 		data->map.maps[(y / width)][(x / lenght) + 1] = '1';
-	if(data->map.itemsflag)
+	if (data->map.itemsflag)
 		mlx_put_image_to_window(data->mlx, data->window.ref, data->image[6].ref,
 			data->position.x, data->position.y);
 }
