@@ -20,7 +20,7 @@
 <a href="https://zupimages.net/viewer.php?id=22/12/3op5.png"><img src="https://zupimages.net/up/22/12/3op5.png" alt="" /></a>
 
 ### Purpose :
-Your are Jack Sparrow. Take all tresor and exit. But don't look back.
+Your are Jack Sparrow. Take all tresor and exit. But don't look back.\n
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/xgK6jyn/giphy.gif" alt="giphy" border="0"></a>
 
 
