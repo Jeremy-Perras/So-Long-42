@@ -1,11 +1,11 @@
 # So-long-42
 
 ## Table of content :
-* [What is printf ?](#what-is-printf-)
+* [What is so long ?](#what-is-so-long-)
 * [What is in it ?](#what-is-in-it-)
 * [How does is work ?](#how-does-is-work-)
 
-### What is printf ?
+### What is so long ?
  The purpose of so long will give a foundation in the following skills: window management, 
  event management, choice of colors and textures. For this we using the minilibx, is a intern library of 42.
  [Images used](https://itch.io/game-assets/free/tag-sprites)
